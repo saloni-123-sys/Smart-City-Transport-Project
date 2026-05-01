@@ -1,0 +1,62 @@
+body {
+    background: #0f2027;
+    color: white;
+    font-family: Arial;
+    text-align: center;
+}
+
+.container {
+    margin-top: 100px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+}
+
+button {
+    padding: 10px;
+    background: #00c6ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.card {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+}
+body {
+    background: linear-gradient(135deg,#141e30,#243b55);
+    color: white;
+    font-family: Arial;
+}
+
+.login-box {
+    width: 350px;
+    margin: 120px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    text-align: center;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    padding: 10px 20px;
+    background: #00c6ff;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}

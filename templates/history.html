@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction History</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            color: #38bdf8;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            padding: 10px;
+        }
+
+        /* CARD */
+        .card {
+            background: rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            border-left: 5px solid #38bdf8;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #38bdf8;
+        }
+
+        .text {
+            font-size: 14px;
+            margin: 4px 0;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+        .low { background: #16a34a; }
+        .medium { background: #f59e0b; }
+        .high { background: #ef4444; }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Prediction History Dashboard</h1>
+
+<div class="container">
+
+    <div class="grid">
+
+        {% for row in data %}
+
+        <div class="card">
+
+            <div class="title">Prediction ID: {{ row[0] }}</div>
+
+            <div class="text">User: {{ row[1] }}</div>
+
+            <div class="text">Traffic: {{ row[2] }}</div>
+
+            <div class="text">Route: {{ row[3] }}</div>
+
+            <div class="text">Time: {{ row[4] }}</div>
+
+            {% if "Low" in row[2] %}
+                <span class="badge low">Low Traffic</span>
+            {% elif "Medium" in row[2] %}
+                <span class="badge medium">Medium Traffic</span>
+            {% else %}
+                <span class="badge high">High Traffic</span>
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

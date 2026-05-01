@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart City Transport Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        /* HEADER */
+        h1 {
+            text-align: center;
+            padding: 20px;
+            color: #38bdf8;
+            letter-spacing: 1px;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 55%;
+            margin: auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        /* INPUT STYLE */
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.02);
+        }
+
+        input::placeholder {
+            color: #cbd5e1;
+        }
+
+        /* BUTTON */
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #22c55e, #16a34a);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(34,197,94,0.4);
+        }
+
+        /* RESULT CARD */
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            background: rgba(255,255,255,0.08);
+            border-left: 5px solid #38bdf8;
+            border-radius: 12px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .badge {
+            font-size: 20px;
+            font-weight: bold;
+            color: #fbbf24;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(10px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        /* SMALL SCREEN */
+        @media(max-width: 768px){
+            .container {
+                width: 90%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>🚦 Smart City Traffic Prediction</h1>
+
+<div class="container">
+
+    <form method="POST">
+
+        <input name="distance_km" placeholder="Distance (KM)" required>
+        <input name="travel_time_min" placeholder="Travel Time (Minutes)" required>
+        <input name="avg_speed" placeholder="Average Speed" required>
+
+        <input name="road_type" placeholder="Road Type (city/highway)" required>
+        <input name="vehicle_type" placeholder="Vehicle Type (car/bus/bike)" required>
+
+        <input name="hour" placeholder="Hour (0-23)" required>
+        <input name="is_weekend" placeholder="Weekend? (1=yes, 0=no)" required>
+
+        <input name="rainfall" placeholder="Rainfall Level" required>
+        <input name="weather_severity" placeholder="Weather Severity (0-3)" required>
+        <input name="visibility" placeholder="Visibility (meters)" required>
+
+        <input name="source" placeholder="Source Location" required>
+        <input name="destination" placeholder="Destination" required>
+
+        <button type="submit">Predict Traffic</button>
+
+    </form>
+
+    {% if result %}
+
+    <div class="result">
+
+        <p class="badge">Traffic Level: {{ result }}</p>
+        <p>Route: {{ route }}</p>
+        <p>Congestion: {{ congestion }}</p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

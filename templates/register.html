@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Register - Smart City AI</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+    }
+
+    /* MAIN CARD */
+    .container {
+        width: 360px;
+        padding: 30px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        backdrop-filter: blur(12px);
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #38bdf8;
+        font-size: 26px;
+    }
+
+    /* INPUTS */
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    input:focus {
+        background: rgba(255,255,255,0.2);
+        transform: scale(1.02);
+    }
+
+    /* BUTTON */
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #22c55e, #16a34a);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #16a34a, #15803d);
+        transform: scale(1.05);
+    }
+
+    /* LINK */
+    a {
+        display: block;
+        margin-top: 15px;
+        color: #38bdf8;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* ICON STYLE HEADER */
+    .icon {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    
+
+    <h1>Create Account</h1>
+
+    <form method="POST">
+
+        <input name="username" placeholder="Enter Username" required>
+
+        <input name="password" type="password" placeholder="Enter Password" required>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <a href="/">← Back to Login</a>
+
+</div>
+
+</body>
+</html>

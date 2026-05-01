@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart City Route AI (Fixed)</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 18px;
+            color: #38bdf8;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            background: rgba(255,255,255,0.06);
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .inputs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 18px;
+            border: none;
+            border-radius: 10px;
+            background: #22c55e;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #16a34a;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            margin-top: 15px;
+            border-radius: 12px;
+            border: none;
+        }
+
+        .routes {
+            margin-top: 15px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .box {
+            padding: 12px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.08);
+            border-left: 5px solid #38bdf8;
+        }
+
+        .low { color: lightgreen; }
+        .medium { color: orange; }
+        .high { color: red; }
+
+    </style>
+</head>
+
+<body>
+
+<h1>🗺️ Smart City Traffic AI (Stable)</h1>
+
+<div class="container">
+
+    <!-- INPUTS -->
+    <div class="inputs">
+        <input id="source" placeholder="Source Location">
+        <input id="destination" placeholder="Destination">
+        <button onclick="analyze()">🚀 Analyze Routes</button>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="routes" id="result"></div>
+
+    <!-- MAP -->
+    <iframe id="map"
+        src="https://maps.google.com/maps?q=Rishikesh&output=embed">
+    </iframe>
+
+</div>
+
+<script>
+
+function generateScore(text){
+    // 🔥 FIXED LOGIC (NO RANDOM)
+    let hash = 0;
+
+    for(let i = 0; i < text.length; i++){
+        hash = (hash + text.charCodeAt(i) * (i+1)) % 100;
+    }
+
+    return hash / 100; // 0 to 1 stable value
+}
+
+function analyze(){
+
+    let source = document.getElementById("source").value || "Rishikesh";
+    let destination = document.getElementById("destination").value || "Haridwar";
+
+    // MAP ROUTE
+    let mapUrl = "https://maps.google.com/maps?q="
+        + encodeURIComponent(source + " to " + destination)
+        + "&output=embed";
+
+    document.getElementById("map").src = mapUrl;
+
+    // 🔥 FIXED ROUTE SCORES (NO RANDOM)
+    let routes = [
+        {
+            name: "Route 1",
+            score: generateScore(source + destination + "route1")
+        },
+        {
+            name: "Route 2",
+            score: generateScore(source + destination + "route2")
+        },
+        {
+            name: "Route 3",
+            score: generateScore(source + destination + "route3")
+        }
+    ];
+
+    let html = "";
+    let best = "";
+    let min = 1;
+
+    routes.forEach(r => {
+
+        let level = "";
+        let cls = "";
+
+        if(r.score < 0.33){
+            level = "Low Traffic";
+            cls = "low";
+        }
+        else if(r.score < 0.66){
+            level = "Medium Traffic";
+            cls = "medium";
+        }
+        else{
+            level = "High Traffic";
+            cls = "high";
+        }
+
+        if(r.score < min){
+            min = r.score;
+            best = r.name;
+        }
+
+        html += `
+            <div class="box">
+                🚗 <b>${r.name}</b><br>
+                🚦 Traffic: <span class="${cls}">${level}</span><br>
+                📊 Score: ${r.score.toFixed(2)}
+            </div>
+        `;
+    });
+
+    html += `
+        <div class="box">
+            ⭐ <b>Best Route: ${best}</b>
+        </div>
+    `;
+
+    document.getElementById("result").innerHTML = html;
+}
+
+</script>
+
+</body>
+</html>

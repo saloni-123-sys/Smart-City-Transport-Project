@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login - Smart City AI</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: white;
+    }
+
+    /* LOGIN CARD */
+    .container {
+        width: 370px;
+        padding: 30px;
+        background: rgba(255,255,255,0.08);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        backdrop-filter: blur(12px);
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .container:hover {
+        transform: translateY(-5px);
+    }
+
+    /* HEADER */
+    h1 {
+        margin-bottom: 20px;
+        font-size: 26px;
+        color: #38bdf8;
+    }
+
+    /* INPUT FIELDS */
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    input:focus {
+        background: rgba(255,255,255,0.2);
+        transform: scale(1.02);
+    }
+
+    /* BUTTON */
+    button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #3b82f6, #06b6d4);
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #2563eb, #0891b2);
+        transform: scale(1.05);
+    }
+
+    /* LINK */
+    a {
+        display: block;
+        margin-top: 15px;
+        color: #38bdf8;
+        text-decoration: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    a:hover {
+        color: #0ea5e9;
+        text-decoration: underline;
+    }
+
+    /* ICON */
+    .icon {
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    /* FOOT NOTE */
+    .note {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #94a3b8;
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="icon">🚦</div>
+
+    <h1>Smart City Login</h1>
+
+    <form method="POST">
+
+        <input name="username" placeholder="Enter Username" required>
+
+        <input name="password" type="password" placeholder="Enter Password" required>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <a href="/register">Create New Account</a>
+
+    <div class="note">
+        Secure AI-powered traffic system login
+    </div>
+
+</div>
+
+</body>
+</html>
